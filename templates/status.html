@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<head>
+   <title>Current Status</title>
+	{% if refresh %}
+		<!--
+		<meta http-equiv="refresh" content="1; url=/status" />
+		-->
+	{% endif %}
+</head>
+
+<body>
+	<h1>Manual Command Sender</h1>
+
+	{% if command %}
+   <h3> {{ command }} </h3>
+   {% endif %}
+	
+	{% if response %}
+   <p> {{ response }} </p>
+   {% endif %}
+
+   {% if message %}
+   <h2>{{ message }}</h2>
+   {% endif %}
+	 <form action="/status" method="POST">
+        <input type="text" name="text">
+        <input type="submit" name="my-form" value="Send">
+    </form>
+
+   <h1>Device Listing and Status</h1>
+	
+	<h2>Link Status</h2> 
+	{% for link in jarvis.links %}
+		<p> |
+			{% for key in link.attr %}
+				{{key}}: {{ link.attr[key] }} | 
+			{% endfor %}
+		</p>
+	{% endfor %}
+	
+	<h2>Channel Status</h2>
+	{% for channel in jarvis.channels %}
+		<h3>{{channel.attr['name']}}</h3>
+		<p> |
+			{% for key in channel.attr %}
+				{#{% if key not in ['commands','name'] %}#}
+					{{key}}: {{ channel.attr[key] }} | 
+				{#{% endif %}#}
+			{% endfor %}
+			</P><p>
+		</p>
+	{% endfor %}
+   	<h2>Rule Status</h2>
+	{% for rule in jarvis.rules %}
+		<h3>{{rule.attr['name']}}</h3>
+		<p> |
+			{% for key in rule.attr %}
+				{#{% if key not in ['commands','name'] %}#}
+					{{key}}: {{ rule.attr[key] }} | 
+				{#{% endif %}#}
+			{% endfor %}
+			</P><p>
+		</p>
+	{% endfor %}
+   {% if message %}
+   <h2>{{ message }}</h2>
+   {% endif %}
+   
+	<a href="/status"> reload </a> |
+	<a href="/"> main </a> |
+	<a href="/test"> test page </a>
+   <p>Loop has run {{ jarvis.attr['counter'] }} times. </p>
+	<p>System time is {{ time }}. </p>
+</body>
+</html>

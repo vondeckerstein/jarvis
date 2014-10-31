@@ -1,0 +1,59 @@
+Relayduino commands
+for 'Jarvis' Project
+
+
+#DW(CH).(R).(G).(B).(T).
+	- Write color (RGB) to DMX Channel (CH) over time (T)
+#DR 			
+	- Print All DMX Channels
+#DS(CH).		
+	- Print Single DMX Channel
+#DE(CH).
+	- Read Single DMX Channel
+#DU
+	- Update DMX
+
+#RW(CH).(ST).	
+	- Write ST to Relay CH (0 for off, 1 for on, anything else for toggle)
+#RE(CH).
+	- Read Single Relay
+#RR	
+	- Print Status of Relays
+#RS
+	- Save Relay State
+#RL
+	- Load Saved Relay State
+#UB(B)
+	- Set unit baud to B:
+	A:	1200	B:	2400
+	C:	4800	D:	9600
+	E:	14400	F:	19200
+	G:	28800	H:	38400
+	I:	57600	J:	115200
+#UA
+	-Blink LED on pin 13 5x
+#UT(L).(D).
+	- Set loop and DMX time to L and D.
+#US
+	- Save loop and DMX times to EEPROM
+#UL
+	- Load loop and DMX times 
+
+
+
+
+
+
+
+// Rachael's 'Incandescent': 255/160/80
+
+
+	- Test Commands:
+
+	#RW1.5.
+	#RW1.5.
+	#RW0.1.#RW1.1.#RW2.1.#RW3.1.#RW4.1.#RW5.1.#RW6.1.#RW7.1.#RS
+	#RW0.0.#RW1.0.#RW2.0.#RW3.0.#RW4.0.#RW5.0.#RW6.0.#RW7.0.#RS
+
+	#DW1.25.25.25.10.
+	#DW2.50.50.50.50.

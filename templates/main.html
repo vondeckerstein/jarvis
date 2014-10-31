@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<head>
+   <title>Jarvis v0.1</title>
+</head>
+
+<body>
+   <h1>Navigation Page</h1>
+
+   <p><a href="/command">Jarvis Test Page</a></p>
+   <p><a href="http://192.168.1.123:1080/">XBMC Remote Control</a></p>
+   <p><a href="http://192.168.1.123:9091/transmission/web/">Transmission Web Interface</a></p>
+   <p><a href="/status">Jarvis Status Page</a></p>
+
+   {% if message %}
+   <h2>{{ message }}</h2>
+   {% endif %}
+
+</body>
+</html>

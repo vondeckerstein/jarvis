@@ -1,0 +1,6 @@
+Jarvis Daemon -- Version History
+
+v.1	test implementation with dummy firmware
+v.2	change inputs outputs to object
+v.3	implement 'refreshdaemon' architecture
+	add dmx

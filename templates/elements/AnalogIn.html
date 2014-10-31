@@ -1,0 +1,5 @@
+<p>
+ <label for="meter{{channel.attr['id']}}">{{channel.attr['name']}} {{channel.attr['value']}}{% if channel.attr['unit'] != "" %}, {{channel.attr['unit']}} {% endif %} </label>
+<meter name="meter{{channel.attr['id']}}" min="{{channel.attr['mix']}}" low="300" optimum="500" high="700" max="{{channel.attr['max']}}" value="{{channel.attr['value']}}">
+	</meter>
+</p>

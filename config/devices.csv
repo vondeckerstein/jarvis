@@ -1,0 +1,32 @@
+#,Link,Type,Pin,Name
+0,A,Arduino,,Relayduino
+1,B,Arduino,,Arduino Uno
+0,A,Relay,2,Relay zero
+1,A,Relay,3,Relay one
+2,A,Relay,4,Relay two
+3,A,Relay,5,Relay three
+4,A,Relay,6,Relay four
+5,A,Relay,7,Relay five
+6,A,Relay,8,Actuator Retract
+7,A,Relay,9,Actuator Extend
+8,A,DMX3,0,Bedroom
+9,A,DMX3,1,Over AC Unit
+10,A,DMX3,2,TV
+11,A,DMX3,3,Guitar Amp
+12,A,DMX3,13,DMX3 four
+13,A,DMX3,16,DMX3 five
+14,A,DMX3,19,DMX3 six
+15,A,DMX3,22,DMX3 seven
+16,A,AnalogIn,0,12V Current
+17,A,AnalogIn,1,Analog In one
+18,A,AnalogIn,2,Analog In two
+19,A,AnalogIn,3,Analog In three
+20,A,AnalogIn,4,Analog In four
+21,A,AnalogIn,5,Analog In five
+22,A,AnalogIn,6,Analog In six
+23,A,AnalogIn,7,Analog In seven
+24,B,LED,13,Status
+25,B,TemperatureSensor,0,Test
+26,B,TemperatureSensor,1,Test
+27,B,TemperatureSensor,2,Test
+28,B,TemperatureSensor,3,Test

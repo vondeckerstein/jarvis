@@ -1,0 +1,13 @@
+jarvis requirements:
+
+*	pyserial
+
+	screen
+	sudo apt-get install screen
+
+*	Flask
+	sudo pip install Flask
+
+Arduino Requirements:
+
+*	Arduino IDE

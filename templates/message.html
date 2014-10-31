@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<head>
+   <title>Jarvis v0.1</title>
+</head>
+
+<body>
+   <h1>Manual Send/Response Page</h1>
+
+	{% if command %}
+   <h3> {{ command }} </h3>
+   {% endif %}
+	
+	{% if response %}
+   <p> {{ response }} </p>
+   {% endif %}
+
+   {% if message %}
+   <h2>{{ message }}</h2>
+   {% endif %}
+	 <form action="/status" method="POST">
+        <input type="text" name="text">
+        <input type="submit" name="my-form" value="Send">
+    </form>
+      <p><a href="/status">Back to Jarvis Status Page</a></p>
+   
+</body>
+</html>

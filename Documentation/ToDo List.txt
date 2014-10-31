@@ -1,0 +1,46 @@
+DONE FILE:
+for Jarvis .7:
+X	implement refresh as a thread instead of an outside process
+for Jarvis .8:
+X	move all IO types and Rules to subfolder as individual files
+version independent:
+X	get python working on laptop
+for jasper:
+X	check soundcard compatibility
+X	post to forum re incompatible soundcards
+X	get sound working
+for learning:
+X	what are contracts?
+
+TODO:
+for Jarvis .8:
+-	implement reload function for Rules, Channels, Links
+-	seperate Channel/Link Libraries to seperate config files
+-	Rewrite Channel/Link Constructors to accept **kwargs
+-	Rewrite Channel/Link configs/libraries to pass **kwargs
+-	temperature readings online
+-	add system up time to web display
+-	fix color always 'white' issue - DMX
+-	combine manualwrite and status pages
+
+version independent:
+-	implement calculated values in inputs(as parent class?)
+X	get object over pyro functionality in test class
+-	get object over pyro functionality in jarvis
+-	get PYRO working over the network
+-	build GUI client with PMW
+-	order dmx shield
+X	get single fader working
+-	get autorefresh on faderchange working
+-	get multiple faders working
+
+for jasper:
+-	figure out how to add to library
+-	actually enter into module	
+
+
+
+for learning:
+
+python tidbits:
+opencv = computervision

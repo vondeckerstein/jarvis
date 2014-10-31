@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<head>
+   <title>Jarvis v0.9</title>
+   <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+   <h1>Jarvis Command Center</h1>
+   <form action="{{url}}" method="POST" id="formid">
+   <input type="hidden" name="caller" id="caller" value="" />
+   <script>
+        function update(caller) {
+            form = document.getElementById('formid')
+            form.caller.value = caller;
+            form.submit();
+        }
+		function updatee(caller) {
+			var http = new XMLHttpRequest();
+			http.open("POST", "/command", true);
+			http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			var params = document.getElementById("formid"); // probably use document.getElementById(...).value
+			http.send(params);
+    
+	}
+	</script>
+	{% for channel in channels %}
+		{% autoescape false %}
+			{{channel}}
+		{% endautoescape %}
+	{% endfor %}
+   </form>
+
+   <p><a href="/status">Jarvis Status Page</a></p>
+	
+   {% if message %}
+   <h2>{{ message }}</h2>
+   {% endif %}
+
+</body>
+</html>

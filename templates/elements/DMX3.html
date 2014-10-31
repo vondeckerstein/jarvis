@@ -1,0 +1,10 @@
+
+	<p>
+	<label for="fader{{channel.attr['id']}}">{{channel.attr['name']}}</label>
+	<input type="range" name="fader{{channel.attr['id']}}" id="fader{{channel.attr['id']}}" min="0" max="100" value="{{channel.attr['P']}}" onchange="update('fader{{channel.attr['id']}}')"/>
+	<select id="select{{channel.attr['id']}}" name="select{{channel.attr['id']}}" onchange="update('select{{channel.attr['id']}}')">
+		{% for color in channel.attr['colors'] %}
+		<option value="{{color}}" {% if color == channel.attr['color'] %} selected {% endif %}>{{color}}</option>
+		{% endfor %}
+	</select>
+	</p>

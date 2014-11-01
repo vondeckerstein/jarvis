@@ -11,8 +11,9 @@ For output, Jarvis is designed to interface any number of devices over USB, and 
 
 Hardware:
 =========
+![Jarvis Hardware](http://i.imgur.com/6hvVemG.png)
 
-Currently, Jarvis's firmware is custom built for my hardware. ( pictured here and growing frequently: http://imgur.com/6hvVemG ) If you'd like to run Jarvis on your own equipment, I want to help. Feel free to email me and I would be happy to either develop or help you develop firmware to run your devices.
+Currently, Jarvis's firmware is custom built for my hardware, pictured above and growing frequently. If you'd like to run Jarvis on your own equipment, I want to help. Feel free to email me and I would be happy to either develop or help you develop firmware to run your devices.
 
 
 TO DO LIST/WISH LIST:

@@ -4,7 +4,6 @@ import datetime
 from flask import Flask, render_template, request
 import configLoader
 import colors
-import powerprint
 app = Flask(__name__)
 
 @app.route("/")

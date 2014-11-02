@@ -1,7 +1,7 @@
 from IOChannel import *
 
 class AnalogIn(IOChannel):
-	def __init__(self, id, name, link, pin=0):
+	def __init__(self, id=None, name=None, link=None, pin=0):
 		self.attr={}
 		self.attr['type']='AnalogIn'
 		self.attr['direction']='input'

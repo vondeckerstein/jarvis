@@ -1,6 +1,5 @@
 import os
-import arduinoIO
-import IOInterface
+import channeltypes
 
 class Configurator:
 	def __init__(self, filename):
@@ -13,11 +12,11 @@ class Configurator:
 			print channel.attr
 		print ""
 		
-	def generateFirmware(self, filename)
+	def generateFirmware(self, filename):
 		print "loading firmware block files..."
-		self.sourceFiles = ["firmwareblocks/ArduinoIO.ht","firmwareblocks/basetemplate.t"]
+		sourceFiles = ["firmwareblocks/basetemplate.h","firmwareblocks/AnalogIn.h",]
 		files = []
-		dicts = []
+		dicts = []		
 		for sourceFile in sourceFiles:
 			files.append(self.loadFile(sourceFile))
 		
@@ -28,7 +27,10 @@ class Configurator:
 			file = file.split("//{{{")
 			dict = {"header comments" : file.pop(0)}
 			for object in file:
-				object.split("}}}")
+				print "splitting object:"
+				print object
+				object = object.split("}}}")
+				print "Adding " + object[0] + " to dictionary"
 				dict[object[0]]=object[1]
 			print "file contents:"
 			print file
@@ -45,20 +47,21 @@ class Configurator:
 		for field in fields:
 			for index, dict in enumerate(dicts):
 				if field in dict:
-					if index !=:
-						outputFile += "\n// " + field + " from " + sourceFiles[index]
-					outputFile += dict[field]
+					if dict[field] not in [None, "", "\n"]: #check for actual content
+						if index != 0:
+							outputFile += "\n// " + field + " from " + sourceFiles[index] + "\n"
+						outputFile += dict[field]
 		
 		#save output file to <filename>.ino
 		print outputFile
 		
 	def loadDeviceConfiguration(self, configurationName):
 		channels = []
-		device = IOInterface.IOInterface()
+		device = channeltypes.ArduinoInterface.ArduinoInterface()
 		print "Getting configuration file for" + configurationName + "..."
 		
 		#build file in memory
-		file = self.loadFile("devices/" + configurationName + ".txt")
+		file = self.loadFile("devices/" + configurationName + ".cfg")
 		
 		#break file into constituent items:
 		file = file.split("#iolocation:")
@@ -68,7 +71,7 @@ class Configurator:
 			for subIndex, item in enumerate(line):
 				if item.count(":")>0:
 					item = item.split(":")
-					line(subIndex] = item
+					line[subIndex] = item
 			file[index]=line
 		
 		# populate device attributes
@@ -78,25 +81,28 @@ class Configurator:
 		for object in file:
 			if isinstance(object[0], str):
 				type = object.pop(0)
-				print "Building channel: " + type
-				constructor = getattr(Arduino, type)
+				print "Building channel: '" + type +"'"
+				print [type]
+				module = getattr(channeltypes, type)
+				constructor = getattr(module, type)
 				channel = constructor()
 				self.addAttributesFromList(channel, object)
 				device.channels.append(channel)
 		return device
 		
-		def addAttributesFromList(self, item, attributesList):
-			for attribute in attributesList:
-				if isinstance(attribute, list):
-					item.attr[attribute[0]] = attribute[1]
+	def addAttributesFromList(self, item, attributesList):
+		for attribute in attributesList:
+			if isinstance(attribute, list):
+				item.attr[attribute[0]] = attribute[1]
 					
-		def loadFile(self, fileLocation):
-			f=open(fileLocation, "r")
-			file=""
-			for line in f:
-				file += line
-			f.close()
-			return file
+	def loadFile(self, fileLocation):
+		f=open(fileLocation, "r")
+		file=""
+		for line in f:
+			file += line
+		f.close()
+		file = file.replace("\r","")
+		return file
 
 if __name__ == "__main__":
 	c = Configurator("ArduinoUno")

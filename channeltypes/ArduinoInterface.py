@@ -3,14 +3,20 @@ import time
 import sys
 import colors
 
-class ArduinoIO:
-	def __init__(self, link, name="unnamed link"):
+class ArduinoInterface:
+	def __init__(self, link=None, name="Unnamed Arduino Compatible Interface Device"):
 		self.attr={}
 		if link is not None:
-			self.link = serial.Serial(str(link), baudrate=115200,timeout=.1)
+			self.establishLink(link)
+		else:
+			self.link = None
 		self.attr['serial'] = link
 		self.attr['name'] = name
 		self.attr['busy'] = False
+		self.channels = []
+	def establishLink(self):
+		self.link = serial.Serial(str(link), baudrate=115200,timeout=.1)
+		self.attr['serial'] = link
 		for i in range(50):
 			self.ask('#RR')
 			sys.stdout.write('.')

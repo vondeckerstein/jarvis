@@ -3,8 +3,9 @@ import glob
 import serial
 
 import jarvisHost
+import channeltypes
 import rules
-import channels
+
 
 CHANNELS_CONFIG_LOCATION = 'config/devices.csv'
 RULES_CONFIG_LOCATION = 'config/rules.csv' 

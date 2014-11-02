@@ -4,7 +4,7 @@ import serial
 
 import jarvisHost
 import rules
-import devices
+import channels
 
 CHANNELS_CONFIG_LOCATION = 'config/devices.csv'
 RULES_CONFIG_LOCATION = 'config/rules.csv' 
@@ -18,7 +18,7 @@ class ConfigLoader:
 		for connection in self.ports: #print available serial connections
 			print "making connection at " + connection
 			link = ''
-			link = devices.ArduinoIO.ArduinoIO(connection)
+			link = channels.ArduinoIO.ArduinoIO(connection)
 			self.jarvis.addLink(link)
 			self.links[link.getAttr('id')]=link
 		lines = []
@@ -66,7 +66,7 @@ class ConfigLoader:
 						print 'failed to add link: "' + args[1] + '"'
 				else:	#line is a channel
 					try:
-						constructor = getattr(getattr(devices, args[2]),args[2])
+						constructor = getattr(getattr(channels, args[2]),args[2])
 						output = constructor(args[0],args[4],self.getLink(args[1]),args[3])
 						self.jarvis.addChannel(output)
 					except Exception, e:
